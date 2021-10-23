@@ -1,7 +1,36 @@
 import random
 import threading
 import time
+from colorama import init,Style,Fore
+import os
 
+
+
+
+
+print("""
+
+__________                          ________               
+\______   \_____    ______ ______  /  _____/  ____   ____  
+ |     ___/\__  \  /  ___//  ___/ /   \  ____/ __ \ /    \ 
+ |    |     / __ \_\___ \ \___ \  \    \_\  \  ___/|   |  \
+ |____|    (____  /____  >____  >  \______  /\___  >___|  /
+                \/     \/     \/          \/     \/     \/ 
+""")
+
+print("""
+Options
+
+1.) Pass Gen
+""")
+
+choice = input("""
+
+Option:
+
+""")
+
+os.system("clear")
 
 
 def lettergen():
@@ -25,12 +54,11 @@ def main():
     
     final_pass = lettergen() + numbergen() + lettergen() + numbergen()
 
-    print(final_pass)
 
     f1 = open("./output/passes.txt", "a+")
     f1.write(f"{final_pass}\n")
     f1.close
-    
+    print(Fore.GREEN,'[CREATED] - ', Fore.WHITE, final_pass )
 
 
 threads=[]
@@ -47,3 +75,6 @@ for i in range(100000):
 
 for i in range(100000):
   threads[i].join()
+
+if choice == 1:
+  main()
